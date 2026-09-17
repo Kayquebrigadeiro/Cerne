@@ -1,0 +1,53 @@
+=== database-final.log ===
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> test:db
+> node --test tests/database.test.mjs
+
+✔ exclusividade exercício/variação (2285.512081ms)
+✔ objetivo obrigatório (8.626982ms)
+✔ regra sem evidência não ativa (9.383591ms)
+✔ evidência pendente não ativa regra (11.306403ms)
+✔ reabertura suspende e aprovação não reativa (18.471024ms)
+✔ suspensão e reabertura sofrem rollback juntas (14.602531ms)
+✔ conteúdo da afirmação é imutável (9.251617ms)
+✔ conteúdo da regra é imutável (7.309861ms)
+✔ vínculos de regra ativa não são alterados (9.072346ms)
+✔ versões preservam evidência anterior (8.921136ms)
+✔ mesmo exercício e equipamento permite variações distintas (6.154083ms)
+✔ evidência de outro objetivo é incompatível (15.872716ms)
+✔ busca textual recupera afirmação com origem (9.345357ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2589.036687
+
+=== python-final.log ===
+................                                                         [100%]
+16 passed in 1.54s
+
+=== Integração HTTP; banco PGlite ===
+test_auth_and_worker_cannot_review (__main__.LifecycleTest.test_auth_and_worker_cannot_review) ... ok
+test_correction_is_new_version_and_old_rule_stays_suspended (__main__.LifecycleTest.test_correction_is_new_version_and_old_rule_stays_suspended) ... ok
+test_discovery_by_muscle_and_equipment (__main__.LifecycleTest.test_discovery_by_muscle_and_equipment) ... ok
+test_lifecycle_all_statuses_and_no_auto_reactivation (__main__.LifecycleTest.test_lifecycle_all_statuses_and_no_auto_reactivation) ... ok
+test_pending_evidence_cannot_activate (__main__.LifecycleTest.test_pending_evidence_cannot_activate) ... ok
+test_reject_ends_review_requires_reopen (__main__.LifecycleTest.test_reject_ends_review_requires_reopen) ... ok
+test_unknown_reference_and_exclusive_target (__main__.LifecycleTest.test_unknown_reference_and_exclusive_target) ... ok
+test_upload_deduplicates_and_rejects_fake_pdf (__main__.LifecycleTest.test_upload_deduplicates_and_rejects_fake_pdf) ... ok
+test_worker_pipeline_real_pdf_bytes_synthetic_content (__main__.LifecycleTest.test_worker_pipeline_real_pdf_bytes_synthetic_content) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 11.382s
+
+OK
+
+=== Java ===
+-------------------------------------------------------------------------------
+Test set: br.com.scrawler.ResolverTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.092 s -- in br.com.scrawler.ResolverTest

@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/scrawler}
+    username: ${DB_USER:scrawler}
+    password: ${DB_PASSWORD}
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 51MB
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: 8080
+  error:
+    include-message: never
+scrawler:
+  user: ${APP_USER:professor}
+  password: ${APP_PASSWORD}
+  worker-password: ${WORKER_PASSWORD}
+  documents: ${DOCUMENT_DIR:./data/documents}

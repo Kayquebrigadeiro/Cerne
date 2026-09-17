@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:17.6
+    environment:
+      POSTGRES_DB: scrawler
+      POSTGRES_USER: scrawler
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Execute scripts/setup_env.py}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U scrawler -d scrawler']
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  backend:
+    build: ./backend
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/scrawler
+      DB_USER: scrawler
+      DB_PASSWORD: ${DB_PASSWORD}
+      APP_USER: ${APP_USER:-professor}
+      APP_PASSWORD: ${APP_PASSWORD}
+      WORKER_PASSWORD: ${WORKER_PASSWORD}
+    volumes:
+      - documents:/data/documents
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '127.0.0.1:8080:8080'
+  worker:
+    build: ./extractor
+    environment:
+      API_URL: http://backend:8080
+      WORKER_PASSWORD: ${WORKER_PASSWORD}
+      SPACY_MODEL: pt_core_news_sm
+      ENABLE_OCR: ${ENABLE_OCR:-false}
+    depends_on:
+      - backend
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - '127.0.0.1:5173:80'
+volumes:
+  postgres_data:
+  documents:
